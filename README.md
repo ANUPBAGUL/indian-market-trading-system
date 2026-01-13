@@ -1,148 +1,153 @@
-# Trading System Mastery Guide
+# 🇮🇳 Indian Market Trading System
 
-## Quick Start (5 Minutes)
+**Intelligent Swing Trading System for NSE/BSE Markets**
+
+## 🚀 Quick Start (5 Minutes)
 ```bash
-# 1. Load data and run paper trading
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Run paper trading (Indian market hours)
 python examples/paper_trading_example.py
 
-# 2. Run backtest with KPIs
+# 3. Backtest with Indian market data
 python examples/decision_logging_example.py
 
-# 3. Validate with walk-forward testing
+# 4. Validate system performance
 python examples/walk_forward_example.py
 ```
 
-## System Architecture
+## 🏛️ System Architecture
 
 ### Core Components
-- **Agents**: Generate probabilistic signals (AccumulationAgent, TriggerAgent, SectorMomentumAgent, EarningsAgent)
-- **ConfidenceEngine**: Combines agent scores into weighted confidence
-- **Governor**: Risk management veto system
-- **BacktestEngine**: Realistic simulation with next-open fills
-- **KPIComputer**: Performance analysis including Signal Quality
+- **Agents**: Generate probabilistic signals adapted for Indian market volatility
+- **ConfidenceEngine**: Combines agent scores with Indian market conditions
+- **Governor**: Risk management with INR position sizing
+- **BacktestEngine**: Realistic simulation with Indian market timings
+- **KPIComputer**: Performance analysis including rupee-based metrics
 
 ### Data Flow
 ```
-Market Data → Agents → ConfidenceEngine → Governor → Execution → KPI Analysis
+NSE/BSE Data → Indian Market Agents → ConfidenceEngine → Governor → INR Execution → Rupee KPIs
 ```
 
-## Key Files to Master
+## 🎯 Indian Market Adaptations
+
+### Market Timing
+- **Trading Hours**: 9:15 AM - 3:30 PM IST
+- **Pre-market**: 9:00 AM - 9:15 AM IST
+- **After-hours**: 3:40 PM - 4:00 PM IST
+- **Signal Generation**: After 3:30 PM daily
+
+### Currency & Position Sizing
+- **Base Currency**: INR (Indian Rupees)
+- **Minimum Position**: ₹10,000
+- **Risk per Trade**: 1-2% of portfolio in INR
+- **Sector Limits**: Max 40% per sector (IT, Banking, Pharma, etc.)
+
+### Indian Market Features
+- **Circuit Breakers**: 5%, 10%, 20% limits
+- **Delivery vs Intraday**: System focuses on delivery trades
+- **T+2 Settlement**: Incorporated in position sizing
+- **STT/Brokerage**: Indian tax structure considered
+
+### Supported Exchanges
+- **NSE**: National Stock Exchange (primary)
+- **BSE**: Bombay Stock Exchange (secondary)
+- **Indices**: NIFTY 50, SENSEX, NIFTY 500
+
+### Indian Sectors Supported
+- **Banking & Financial Services**: HDFC, ICICI, SBI, Kotak
+- **Information Technology**: TCS, Infosys, Wipro, HCL Tech
+- **Pharmaceuticals**: Sun Pharma, Dr. Reddy's, Cipla
+- **FMCG**: HUL, ITC, Nestle, Britannia
+- **Automobiles**: Maruti, Tata Motors, M&M, Bajaj Auto
+- **Metals & Mining**: Tata Steel, JSW, Hindalco
+- **Energy & Power**: Reliance, ONGC, NTPC, Power Grid
+- **Telecom**: Bharti Airtel, Jio (RIL)
+
+## 🔧 Key Files to Master
 
 ### 1. Agent System (`src/`)
 ```python
-# AccumulationAgent - Institutional detection
-accumulation_agent.py  # Volume/price accumulation patterns
+# AccumulationAgent - FII/DII detection
+accumulation_agent.py  # Volume/price accumulation for Indian stocks
 
-# TriggerAgent - Breakout timing (requires 2-of-3 signals)
+# TriggerAgent - Breakout timing (Indian market volatility)
 trigger_agent.py       # Price breakouts, volume spikes, momentum
 
-# ConfidenceEngine - Weighted scoring
+# ConfidenceEngine - INR weighted scoring
 confidence_engine.py   # Combines agent outputs, 62% threshold
 ```
 
 ### 2. Risk Management (`src/`)
 ```python
-# Governor - Risk veto system
+# Governor - Indian market risk rules
 governor.py           # Position limits, confidence gates, sector rules
 
-# PositionSizer - Kelly-based sizing
-position_sizer.py     # Risk-adjusted position sizing
+# PositionSizer - INR Kelly-based sizing
+position_sizer.py     # Risk-adjusted position sizing in rupees
 ```
 
 ### 3. Execution & Analysis (`src/`)
 ```python
-# BacktestEngine - Realistic simulation
+# BacktestEngine - Indian market simulation
 backtest_engine.py    # Next-open fills, stop execution, trade logging
 
-# KPIComputer - Performance metrics
-kpi_computer.py       # Expectancy, drawdown, Signal Quality KPI
+# KPIComputer - INR performance metrics
+kpi_computer.py       # Expectancy in rupees, drawdown, Signal Quality
 ```
 
-## Critical Concepts
+## 🎯 Critical Concepts for Indian Markets
 
 ### 1. No Lookahead Bias
-- All calculations use only historical data
+- All calculations use only historical NSE/BSE data
 - Signals generated on day T, executed at open of T+1
 - Stop losses checked using intraday lows
 
-### 2. Probabilistic Approach
-- Agents provide probability assessments, not guarantees
-- Confidence thresholds filter low-quality signals
-- Focus on expectancy over win rate
+### 2. Indian Market Volatility
+- Higher volatility than US markets requires adjusted thresholds
+- FII/DII flow impact considered
+- Currency fluctuation impact on IT/Pharma sectors
 
-### 3. Signal Quality KPI
+### 3. Signal Quality KPI (INR-based)
 ```python
-# Track signal effectiveness
+# Track signal effectiveness in rupees
 conversion_rate = executed_signals / total_signals
 signal_accuracy = profitable_trades / executed_signals
-rejection_reasons = {'Governor rejected': count, 'Insufficient cash': count}
+rupee_expectancy = avg_profit_per_trade_inr
 ```
 
-## System Refinements Applied
-
-### Threshold Adjustments (Reduced Rigidity)
-- **Trigger Agent**: 2-of-3 signals required (was 3-of-3)
-- **Confidence**: Aligned at 62% threshold across components
-- **Accumulation**: Relaxed thresholds for modern market conditions
-- **Result**: 100% increase in signal generation while maintaining quality
-
-## Usage Patterns
-
-### 1. Development Cycle
-```python
-# Step 1: Backtest with decision logging
-results = backtest_engine.run(data, signal_generator, governor)
-
-# Step 2: Analyze KPIs including Signal Quality
-kpis = KPIComputer.compute_kpis(results['trades'], results['equity_curve'], 
-                                signal_data=results['signal_log'])
-
-# Step 3: Validate with walk-forward testing
-walk_forward_results = WalkForwardTester.run(data, params)
-
-# Step 4: Paper trade before live deployment
-paper_signals = PaperTradingEngine.generate_signals(current_data)
-```
-
-### 2. Optimization Workflow
-```python
-# Use Signal Quality KPI to identify bottlenecks
-if conversion_rate < 50%:
-    # Check Governor rejection reasons
-    # Adjust confidence thresholds
-    # Review position sizing limits
-
-if signal_accuracy < 40%:
-    # Review agent logic
-    # Adjust confidence weights
-    # Check market regime alignment
-```
-
-### 3. Risk Management
-```python
-# Governor enforces multiple risk controls
-- Confidence gates (62% minimum)
-- Position limits (max 10 positions)
-- Sector concentration (max 40% per sector)
-- Cash requirements (position sizing)
-- Drawdown protection (confidence decay)
-```
-
-## Performance Targets
+## 📊 Performance Targets (INR)
 
 ### Minimum Viable System
-- **Expectancy**: > $0 per trade
+- **Expectancy**: > ₹500 per trade
 - **Max Drawdown**: < 15%
 - **Signal Conversion**: > 40%
 - **Signal Accuracy**: > 45%
 
 ### Optimized System
-- **Expectancy**: > $100 per trade
+- **Expectancy**: > ₹5,000 per trade
 - **Max Drawdown**: < 10%
 - **Signal Conversion**: > 60%
 - **Signal Accuracy**: > 55%
 
-## Testing Strategy
+## 🕰️ Indian Market Schedule
+
+### Daily Routine
+- **3:30 PM**: Market close, data collection
+- **4:00 PM**: Run system analysis
+- **6:00 PM**: Review signals and decisions
+- **9:00 AM**: Pre-market preparation
+- **9:15 AM**: Market open, execute trades
+
+### Key Dates
+- **Quarterly Results**: Mar, Jun, Sep, Dec
+- **Budget Day**: February 1st
+- **RBI Policy**: Every 2 months
+- **FII/DII Data**: Daily after 6 PM
+
+## 🧪 Testing Strategy
 
 ### 1. Unit Tests (`tests/`)
 ```bash
@@ -159,79 +164,54 @@ python -m pytest tests/test_backtest_integration.py
 python -m pytest tests/test_kpi_integration.py
 ```
 
-### 3. Walk-Forward Validation
+### 3. Indian Market Validation
 ```python
-# Prevent overfitting with temporal separation
+# Prevent overfitting with Indian market data
 WalkForwardTester.run(
-    data=historical_data,
+    data=nse_historical_data,
     train_months=12,    # Training period
     test_months=3,      # Out-of-sample testing
     step_months=1       # Rolling window step
 )
 ```
 
-## Common Pitfalls
+## ⚠️ Common Pitfalls in Indian Markets
 
 ### 1. Lookahead Bias
 ❌ Using future data in signal generation
 ✅ Only use data available at signal time
 
-### 2. Overfitting
-❌ Optimizing on full dataset
-✅ Use walk-forward testing with frozen parameters
+### 2. Overfitting to Bull Markets
+❌ Optimizing only on 2020-2021 data
+✅ Use walk-forward testing across market cycles
 
-### 3. Ignoring Signal Quality
-❌ Focusing only on trade outcomes
-✅ Monitor conversion rates and rejection reasons
+### 3. Ignoring Indian Market Structure
+❌ Using US market assumptions
+✅ Account for circuit breakers, settlement cycles
 
-### 4. Rigid Thresholds
-❌ All-or-nothing decision rules
-✅ Probabilistic scoring with reasonable thresholds
+### 4. Currency Risk
+❌ Ignoring INR volatility impact
+✅ Monitor currency impact on IT/Pharma sectors
 
-## Deployment Checklist
+## 🚀 Deployment Checklist
 
-- [ ] Backtest shows positive expectancy
-- [ ] Walk-forward validation confirms robustness
+- [ ] Backtest shows positive expectancy in INR
+- [ ] Walk-forward validation across Indian market cycles
 - [ ] Signal Quality KPI shows healthy conversion rates
-- [ ] Paper trading validates current market behavior
-- [ ] Risk management rules properly configured
+- [ ] Paper trading validates current NSE/BSE behavior
+- [ ] Risk management rules configured for Indian volatility
 - [ ] Decision logging enabled for debugging
-- [ ] KPI monitoring dashboard ready
+- [ ] INR-based KPI monitoring dashboard ready
+- [ ] Indian market hours and holidays configured
 
-## Key Insights for Mastery
+## 🎯 Key Insights for Indian Market Mastery
 
-1. **Expectancy > Win Rate**: Focus on average profit per trade, not percentage wins
-2. **Signal Quality Matters**: High-quality signals with low conversion waste resources
-3. **Risk Management First**: Governor prevents catastrophic losses
-4. **Probabilistic Thinking**: Agents assess probabilities, not certainties
-5. **Temporal Validation**: Walk-forward testing prevents overfitting
-6. **Explainability**: Decision logs enable systematic improvement
-7. **Market Adaptation**: System refined based on behavior analysis
+1. **Expectancy in INR > Win Rate**: Focus on rupee profit per trade
+2. **FII/DII Flow Matters**: Monitor institutional flow impact
+3. **Sector Rotation**: Indian markets show strong sector momentum
+4. **Volatility Management**: Higher volatility requires adjusted stops
+5. **Settlement Awareness**: T+2 settlement impacts position sizing
+6. **Tax Efficiency**: Consider STT and capital gains implications
+7. **Market Timing**: Respect Indian market hours and holidays
 
-## Advanced Topics
-
-### Custom Agent Development
-```python
-class MyAgent:
-    def run(self, symbol_data, market_data):
-        # Return probability score 0-100
-        return {'confidence': score, 'reasoning': explanation}
-```
-
-### Governor Rule Customization
-```python
-# Add custom risk rules in governor.py
-def _check_custom_rule(self, **kwargs):
-    # Implement custom logic
-    return decision, reason
-```
-
-### KPI Extension
-```python
-# Add custom metrics in kpi_computer.py
-def _calculate_custom_metric(self, trades):
-    # Implement custom analysis
-    return metric_value
-```
-
-This system emphasizes **expectancy-driven trading** with **comprehensive risk management** and **robust validation**. Master these concepts and you'll have a professional-grade algorithmic trading system.
+This system emphasizes **expectancy-driven trading** adapted for **Indian market conditions** with **comprehensive risk management** and **robust validation**. Master these concepts for professional-grade algorithmic trading in NSE/BSE markets.
