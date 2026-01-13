@@ -180,15 +180,17 @@ class TestSystemIntegration(unittest.TestCase):
         self.assertIsInstance(trigger_result['confidence'], (int, float))
         
         # Test confidence engine integration
-        confidence_result = self.confidence_engine.run(
-            accumulation_score=acc_result['confidence'],
-            trigger_score=trigger_result['confidence'],
-            sector_score=70.0,
-            earnings_score=70.0
-        )
+        agent_scores = {
+            'accumulation': acc_result['confidence'],
+            'trigger': trigger_result['confidence'],
+            'sector_momentum': 70.0,
+            'regime': 70.0
+        }
         
-        self.assertIn('confidence', confidence_result)
-        self.assertIsInstance(confidence_result['confidence'], (int, float))
+        confidence_score, confidence_bucket = ConfidenceEngine.compute(agent_scores)
+        
+        self.assertIsInstance(confidence_score, (int, float))
+        self.assertIsInstance(confidence_bucket, str)
     
     def test_governor_integration(self):
         """Test Governor integration with system."""

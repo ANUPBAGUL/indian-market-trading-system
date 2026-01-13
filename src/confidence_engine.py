@@ -28,9 +28,9 @@ class ConfidenceEngine:
         'regime': 0.20
     }
     
-    # Confidence bucket thresholds (simplified 10-point buckets)
+    # Confidence bucket thresholds (5-point buckets for precision)
     CONFIDENCE_BUCKETS = [
-        (60, 70), (70, 80), (80, 90), (90, 100)
+        (60, 65), (65, 70), (70, 75), (75, 80), (80, 85), (85, 90), (90, 95), (95, 100)
     ]
     
     @staticmethod
@@ -82,8 +82,8 @@ class ConfidenceEngine:
                 return f"{min_val}-{max_val}"
         
         # Handle edge case for perfect scores
-        if score >= 90:
-            return "90-100"
+        if score >= 95:
+            return "95-100"
         
         # Below minimum confidence threshold
         return "Below-60"

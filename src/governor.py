@@ -27,7 +27,7 @@ class Governor:
     
     # Risk management limits
     MAX_POSITION_SIZE = 10000      # Maximum shares per position
-    MIN_CONFIDENCE = 62.0          # Minimum confidence to enter
+    MIN_CONFIDENCE = 60.0          # Minimum confidence to enter (inclusive)
     MAX_CORRELATION = 0.7          # Maximum position correlation
     MAX_SECTOR_EXPOSURE = 0.25     # Maximum 25% in any sector
     MIN_LIQUIDITY = 100000         # Minimum daily volume

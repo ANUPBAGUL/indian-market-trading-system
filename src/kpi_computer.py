@@ -61,6 +61,16 @@ class KPIComputer:
         signal_quality = {}
         if signal_data:
             signal_quality = KPIComputer._analyze_signal_quality(signal_data, trades)
+        else:
+            # Provide empty structure when no signal data
+            signal_quality = {
+                'total_signals': 0,
+                'executed_signals': 0,
+                'conversion_rate_pct': 0.0,
+                'signal_accuracy_pct': 0.0,
+                'profitable_signals': 0,
+                'rejection_reasons': {}
+            }
         
         # Additional metrics
         trade_stats = KPIComputer._calculate_trade_stats(trades)
