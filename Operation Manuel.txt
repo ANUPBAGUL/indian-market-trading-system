@@ -1,0 +1,314 @@
+Below is a **clear, structured, non-technical user guide** you can keep as a **README / Notion doc / personal operating manual**.
+
+It explains **what the system is, who it is for, how it works, and exactly how to use it** — without jargon overload.
+
+---
+
+# 📘 SYSTEM USER GUIDE
+
+## Intelligent Agentic Swing Trading System
+
+---
+
+## 1️⃣ WHAT THIS SYSTEM IS
+
+This is a **decision-making system for swing trading**, not a simple trading bot.
+
+It is designed to:
+
+* Identify **high-quality trade opportunities before they become obvious**
+* Trade **selectively**, not frequently
+* Manage risk **automatically and consistently**
+* Remove emotional and impulsive decisions
+* Adapt to different market conditions
+
+### In one line:
+
+> **This system decides *when it is worth trading* — and just as importantly, *when it is not*.**
+
+---
+
+## 2️⃣ WHAT THIS SYSTEM IS NOT
+
+This system is **not**:
+
+* A price prediction engine
+* A “buy/sell on indicators” algo
+* A high-frequency or intraday bot
+* A news-chasing system
+* A get-rich-quick setup
+
+It does **not** try to predict the future.
+It reacts to **evidence**.
+
+---
+
+## 3️⃣ WHO THIS SYSTEM IS FOR
+
+### ✅ This system is ideal for:
+
+* Swing traders (holding days to weeks)
+* Part-time traders with limited screen time
+* Traders who value **capital protection**
+* Traders who want structure and discipline
+* Engineers / analytical thinkers
+
+### ❌ This system is NOT ideal for:
+
+* Scalpers
+* Traders who need daily action
+* Traders who override rules emotionally
+* Traders chasing every top gainer
+* People who want instant results
+
+---
+
+## 4️⃣ HOW THIS SYSTEM THINKS (CORE PHILOSOPHY)
+
+The system is built on **how real market moves happen**:
+
+1. **Smart money accumulates quietly**
+2. **Price breaks out with volume**
+3. **Sector money provides fuel**
+4. **Earnings justify revaluation**
+5. **Volatility defines risk and reward**
+
+The system waits for **alignment**, not perfection.
+
+---
+
+## 5️⃣ HOW THIS SYSTEM WORKS (HIGH LEVEL)
+
+```
+Market Data
+   ↓
+Feature Computation (ATR, Volume, Strength)
+   ↓
+Specialized Agents Analyze Different Aspects
+   ↓
+Governor Evaluates Evidence & Risk
+   ↓
+Decision: ENTER / NO TRADE / EXIT
+```
+
+Each part has a specific role.
+
+---
+
+## 6️⃣ THE AGENTS (WHAT EACH PART DOES)
+
+### 🧠 Accumulation Agent
+
+* Detects quiet institutional buying
+* Looks for tight price ranges and absorbed volume
+* Answers: *“Is someone positioning here?”*
+
+---
+
+### 🔥 Trigger Agent
+
+* Waits for actual price movement
+* Looks for breakout + volume expansion
+* Answers: *“Is the move starting now?”*
+
+---
+
+### 🧭 Sector Momentum Agent
+
+* Checks if the whole sector is moving
+* Avoids isolated, weak breakouts
+* Answers: *“Is there fuel behind this?”*
+
+---
+
+### 📅 Earnings & Events Agent
+
+* Protects against earnings risk
+* Classifies post-earnings reactions
+* Answers: *“Is this a risk or an opportunity?”*
+
+---
+
+### ⚖️ Risk & Position Agent
+
+* Calculates position size using volatility
+* Ensures risk per trade is never exceeded
+* Answers: *“How much can we safely trade?”*
+
+---
+
+### 🏛️ Governor (Final Authority)
+
+* Combines all agent opinions
+* Enforces vetoes and thresholds
+* Makes the final decision
+* Answers: *“Do we act, or do nothing?”*
+
+---
+
+## 7️⃣ WHAT THE SYSTEM OUTPUTS DAILY
+
+Each day, the system gives you:
+
+* ✅ Stocks approved for entry (if any)
+* ❌ Stocks rejected (with reasons)
+* 📊 Confidence score for each decision
+* ⚠️ Risk-aware position sizing
+* 🧾 Clear explanation for every action
+
+**Some days, the correct output is:**
+
+> *No trades today.*
+
+This is a **feature**, not a failure.
+
+---
+
+## 8️⃣ HOW TO USE THE SYSTEM (STEP BY STEP)
+
+### 🌅 Step 1 — Run the System (Once Per Day)
+
+* Run after market close or before next open
+* Generate signals and decisions
+
+---
+
+### 📝 Step 2 — Read the Governor’s Decision
+
+For each stock:
+
+* Decision: ENTER / NO TRADE
+* Confidence score
+* Reason (plain language)
+
+👉 **Do not override decisions.**
+
+---
+
+### 📊 Step 3 — (Paper or Live) Execute Exactly
+
+* If paper trading → log the trade
+* If live trading → place trade as specified
+* Use system-defined position size and stop
+
+No discretion.
+
+---
+
+### 🌙 Step 4 — Log Outcomes
+
+* Entry price
+* Exit price
+* Confidence at entry
+* Reason for exit
+
+Facts only. No opinions.
+
+---
+
+## 9️⃣ HOW THE SYSTEM HANDLES “NEWS”
+
+* It does **not read headlines**
+* It reacts to **market behavior**
+* Volume, price, and sector moves act as real-time news
+* Earnings dates are handled explicitly for safety
+
+> **If news matters, the market will show it.**
+
+---
+
+## 🔟 HOW RISK IS CONTROLLED
+
+Risk is **never negotiated**.
+
+* Fixed risk per trade
+* Volatility-based stop losses
+* Confidence affects size, not risk
+* Sector exposure limits
+* Governor veto power
+
+This keeps losses **small, boring, and survivable**.
+
+---
+
+## 1️⃣1️⃣ WHAT YOU SHOULD EXPECT
+
+### You WILL experience:
+
+* Many no-trade days
+* Missed opportunities
+* Small losses
+* Long boring periods
+
+### You should NOT experience:
+
+* Large surprise losses
+* Emotional decision-making
+* Overtrading
+* Capital blow-ups
+
+---
+
+## 1️⃣2️⃣ HOW TO MEASURE SUCCESS
+
+Success is **not daily profit**.
+
+Success is:
+
+* Positive expectancy
+* Stable drawdowns
+* Fewer but higher-quality trades
+* Confidence behaving consistently
+* You trusting “NO TRADE” days
+
+---
+
+## 1️⃣3️⃣ WHAT YOU MUST NOT DO
+
+❌ Do not override trades
+❌ Do not add random indicators
+❌ Do not tune daily
+❌ Do not chase missed moves
+❌ Do not trade emotionally
+
+The system needs **time and consistency**.
+
+---
+
+## 1️⃣4️⃣ HOW THIS SYSTEM EVOLVES
+
+The system improves through:
+
+* Observation
+* Weekly reviews
+* Minimal threshold tuning
+* Data-driven refinements
+
+Not through constant changes.
+
+---
+
+## 1️⃣5️⃣ FINAL MINDSET (MOST IMPORTANT)
+
+> **This system is not here to entertain you.
+> It is here to protect you and compound slowly.**
+
+If the system feels:
+
+* Calm → it’s working
+* Boring → it’s working very well
+* Stressful → something is wrong
+
+---
+
+## 📌 FINAL SUMMARY
+
+* This is a **decision framework**, not a bot
+* It trades **evidence, not predictions**
+* It values **survival over activity**
+* It is designed to mature safely over time
+
+Use it patiently.
+Respect it.
+Let it do its job.
+
